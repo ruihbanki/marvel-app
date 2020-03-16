@@ -1,1 +1,1 @@
-export { default } from "./CharacterSearchContainer";
+export { default } from "./CharacterSearch";
