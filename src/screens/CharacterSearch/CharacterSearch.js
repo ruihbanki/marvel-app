@@ -8,7 +8,7 @@ const CharacterSearch = React.memo(({ characters }) => {
       CharacterSearch
       <ul>
         {characters.map(c => (
-          <li>{c}</li>
+          <li>{c.name}</li>
         ))}
       </ul>
     </div>

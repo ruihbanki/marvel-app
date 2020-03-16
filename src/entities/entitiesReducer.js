@@ -1,7 +1,7 @@
 import merge from "lodash/merge";
 
 const initialState = {
-  entities: {}
+  characters: {}
 };
 
 const entitiesReducer = (state, action) => {
@@ -11,11 +11,7 @@ const entitiesReducer = (state, action) => {
   switch (action.type) {
     case "UPDATE_ENTITIES": {
       const { entities } = action;
-      const entitiesMerged = merge(state.entities, entities);
-      return {
-        ...state,
-        entities: entitiesMerged
-      };
+      return merge(state, entities);
     }
     case "DELETE_ENTITY": {
       return state;

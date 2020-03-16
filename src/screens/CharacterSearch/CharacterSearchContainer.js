@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import CharacterSearch from "./CharacterSearch";
 import { connect } from "react-redux";
 import { fetchCharacters } from "./characterSearchActions";
+import { getCharacters } from "./characterSearchSelectors";
 
 const CharacterSearchContainer = React.memo(
   ({ characters, fetchCharacters }) => {
@@ -14,7 +15,7 @@ const CharacterSearchContainer = React.memo(
 
 const mapStateToProps = state => {
   return {
-    characters: state.ui.characterSearch.charactersIds
+    characters: getCharacters(state)
   };
 };
 
