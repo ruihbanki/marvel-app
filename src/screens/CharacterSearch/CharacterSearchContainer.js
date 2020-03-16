@@ -14,7 +14,7 @@ const CharacterSearchContainer = React.memo(
 
 const mapStateToProps = state => {
   return {
-    characters: []
+    characters: state.ui.characterSearch.charactersIds
   };
 };
 

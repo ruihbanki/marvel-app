@@ -1,5 +1,5 @@
 const initialState = {
-  charactersById: {}
+  charactersIds: []
 };
 
 const characterSearchReducer = (state, action) => {
@@ -7,8 +7,11 @@ const characterSearchReducer = (state, action) => {
     return initialState;
   }
   switch (action.type) {
-    case "FETCH": {
-      return state;
+    case "RECEIVE_CHARACTERS": {
+      return {
+        ...state,
+        charactersIds: action.data
+      };
     }
     case "SAVE": {
       console.log("==============sdxccd");

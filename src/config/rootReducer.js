@@ -1,13 +1,9 @@
 import { combineReducers } from "redux";
-import characterReducer from "../entities/characterReducer";
 import characterSearchReducer from "../screens/CharacterSearch/characterSearchReducer";
-
-const entitiesReducer = combineReducers({
-  character: characterReducer
-});
+import entitiesReducer from "../entities/entitiesReducer";
 
 const uiReducer = combineReducers({
-  character: characterSearchReducer
+  characterSearch: characterSearchReducer
 });
 
 const rootReducer = combineReducers({
