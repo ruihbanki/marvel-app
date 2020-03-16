@@ -1,4 +1,4 @@
-import { searchCharacters } from "../../services/marvelServices";
+import { searchCharacters, getCharacter } from "../../services/marvelServices";
 import { normalizeCharacters } from "../../config/normalize";
 import { updateEntities } from "../../entities/entitiesActions";
 
@@ -9,15 +9,23 @@ export function receiveCharacters(data) {
   };
 }
 
-export function fetchCharacters() {
+export function fetchCharacters(keywords) {
   return dispatch => {
-    searchCharacters().then(resp => {
+    searchCharacters(keywords).then(resp => {
       const {
         data: { results }
       } = resp.data;
       const normalized = normalizeCharacters(results);
       dispatch(updateEntities(normalized.entities));
       dispatch(receiveCharacters(normalized.result));
+    });
+  };
+}
+
+export function fetchCharacter(id) {
+  return dispatch => {
+    getCharacter(id).then(resp => {
+      console.log(resp);
     });
   };
 }

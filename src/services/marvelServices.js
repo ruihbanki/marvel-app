@@ -27,3 +27,7 @@ const getUrl = (path, params) => {
 export const searchCharacters = search => {
   return getUrl("characters", { nameStartsWith: search });
 };
+
+export const getCharacter = id => {
+  return getUrl(`characters/${id}`);
+};

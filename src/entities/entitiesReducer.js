@@ -14,6 +14,7 @@ const entitiesReducer = (state, action) => {
       return merge(state, entities);
     }
     case "DELETE_ENTITY": {
+      console.log(action);
       return state;
     }
     default: {
