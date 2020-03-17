@@ -1,8 +1,8 @@
 import {
-  FETCH_CHARACTERS_SUCCESS,
-  FETCH_CHARACTERS_REQUEST,
-  FETCH_CHARACTERS_FAILURE
-} from "./characterSearchActions";
+  FETCH_CHARACTER_SUCCESS,
+  FETCH_CHARACTER_REQUEST,
+  FETCH_CHARACTER_FAILURE
+} from "./characterFormActions";
 
 const initialState = {
   charactersIds: [],
@@ -10,28 +10,27 @@ const initialState = {
   loading: false
 };
 
-const characterSearchReducer = (state, action) => {
+const characterFormReducer = (state, action) => {
   if (!state) {
     return initialState;
   }
   switch (action.type) {
-    case FETCH_CHARACTERS_REQUEST: {
+    case FETCH_CHARACTER_REQUEST: {
       return {
         ...state,
         loading: true
       };
     }
-    case FETCH_CHARACTERS_FAILURE: {
+    case FETCH_CHARACTER_FAILURE: {
       return {
         ...state,
         error: action.error,
         loading: false
       };
     }
-    case FETCH_CHARACTERS_SUCCESS: {
+    case FETCH_CHARACTER_SUCCESS: {
       return {
         ...state,
-        charactersIds: action.data,
         loading: false
       };
     }
@@ -41,4 +40,4 @@ const characterSearchReducer = (state, action) => {
   }
 };
 
-export default characterSearchReducer;
+export default characterFormReducer;

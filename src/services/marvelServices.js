@@ -24,7 +24,7 @@ const getUrl = (path, params) => {
   });
 };
 
-export const searchCharacters = search => {
+export const getCharacters = search => {
   return getUrl("characters", { nameStartsWith: search });
 };
 
