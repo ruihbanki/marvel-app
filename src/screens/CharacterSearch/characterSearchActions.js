@@ -8,13 +8,13 @@ export const FETCH_CHARACTERS_SUCCESS = "FETCH_CHARACTERS_SUCCESS";
 
 export function fetchCharactersRequest() {
   return {
-    type: FETCH_CHARACTERS_SUCCESS
+    type: FETCH_CHARACTERS_REQUEST
   };
 }
 
 export function fetchCharactersFailure(error) {
   return {
-    type: FETCH_CHARACTERS_SUCCESS,
+    type: FETCH_CHARACTERS_FAILURE,
     error
   };
 }
@@ -28,11 +28,9 @@ export function fetchCharactersSuccess(data) {
 
 export function fetchCharacters(keywords) {
   return dispatch => {
+    dispatch(fetchCharactersRequest());
     getCharacters(keywords).then(resp => {
-      const {
-        data: { results }
-      } = resp.data;
-      const normalized = normalizeCharacters(results);
+      const normalized = normalizeCharacters(resp.data.data.results);
       dispatch(updateEntities(normalized.entities));
       dispatch(fetchCharactersSuccess(normalized.result));
     });

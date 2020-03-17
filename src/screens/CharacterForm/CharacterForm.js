@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { getCharacter } from "./characterFormSelectors";
+import { getCharacter, getLoading } from "./characterFormSelectors";
 import { fetchCharacter } from "./characterFormActions";
 
 const CharacterForm = React.memo(() => {
@@ -9,7 +9,8 @@ const CharacterForm = React.memo(() => {
 
   const { id } = useParams();
 
-  const character = useSelector(state => getCharacter(state, id));
+  const character = useSelector(state => getCharacter(state, id)) || {};
+  const loading = useSelector(getLoading);
 
   useEffect(() => {
     dispatch(fetchCharacter(id));
@@ -18,8 +19,9 @@ const CharacterForm = React.memo(() => {
   return (
     <div>
       <h1>CharacterForm</h1>
+      {loading && "Loading..."}
       <Link to="/">Back</Link>
-      <input type="text" value={character.name} />
+      <input type="text" value={character.name} readOnly />
     </div>
   );
 });

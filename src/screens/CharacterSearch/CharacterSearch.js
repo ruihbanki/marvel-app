@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCharacters } from "./characterSearchSelectors";
+import { getCharacters, getLoading } from "./characterSearchSelectors";
 import { fetchCharacters } from "./characterSearchActions";
 import { Link } from "react-router-dom";
 
 const CharacterSearch = React.memo(() => {
   const characters = useSelector(getCharacters);
+  const loading = useSelector(getLoading);
   const [search, setSearch] = useState("");
 
   const dispatch = useDispatch();
@@ -26,9 +27,10 @@ const CharacterSearch = React.memo(() => {
         <input value={search} onChange={e => setSearch(e.target.value)} />
         <button type="submit">Search</button>
       </form>
+      {loading && "Loading..."}
       <ul>
         {characters.map(c => (
-          <li>
+          <li key={c.id}>
             <Link to={`/character/${c.id}`}>{c.name}</Link>
           </li>
         ))}
