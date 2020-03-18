@@ -6,6 +6,8 @@ import {
 
 const initialState = {
   charactersIds: [],
+  offset: 0,
+  limit: 20,
   error: null,
   loading: false
 };

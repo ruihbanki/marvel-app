@@ -26,10 +26,10 @@ export function fetchCharactersSuccess(data) {
   };
 }
 
-export function fetchCharacters(keywords) {
+export function fetchCharacters(keywords, offset, limit) {
   return dispatch => {
     dispatch(fetchCharactersRequest());
-    getCharacters(keywords).then(resp => {
+    getCharacters(keywords, offset, limit).then(resp => {
       const normalized = normalizeCharacters(resp.data.data.results);
       dispatch(updateEntities(normalized.entities));
       dispatch(fetchCharactersSuccess(normalized.result));

@@ -31,6 +31,10 @@ const CharacterSearch = React.memo(() => {
       <ul>
         {characters.map(c => (
           <li key={c.id}>
+            <img
+              src={`${c.thumbnail.path}.${c.thumbnail.extension}`}
+              width="100"
+            />
             <Link to={`/character/${c.id}`}>{c.name}</Link>
           </li>
         ))}
