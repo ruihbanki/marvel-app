@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Grid from "@material-ui/core/Grid";
+import Pagination from "@material-ui/lab/Pagination";
 import { getCharacters, getLoading } from "./characterSearchSelectors";
 import { fetchCharacters } from "./characterSearchActions";
 import CharacterCard from "./CharacterCard";
@@ -35,6 +35,7 @@ const CharacterSearch = React.memo(() => {
           <CharacterCard character={c} />
         ))}
       </CardGrid>
+      <Pagination count={10} color="primary" />
     </div>
   );
 });
