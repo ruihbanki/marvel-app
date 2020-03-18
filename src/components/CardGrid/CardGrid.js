@@ -9,7 +9,10 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     width: 240,
-    padding: 8
+    padding: 8,
+    "& > div": {
+      height: 340
+    }
   }
 }));
 
