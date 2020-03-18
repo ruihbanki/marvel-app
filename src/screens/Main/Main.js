@@ -5,6 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import CharacterSearch from "../CharacterSearch";
 import CharacterForm from "../CharacterForm";
+import InputBase from "@material-ui/core/InputBase";
 
 const Main = React.memo(() => {
   return (

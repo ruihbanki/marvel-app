@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Grid from "@material-ui/core/Grid";
 import { getCharacters, getLoading } from "./characterSearchSelectors";
 import { fetchCharacters } from "./characterSearchActions";
-import { Link } from "react-router-dom";
+import CharacterCard from "./CharacterCard";
+import CardGrid from "../../components/CardGrid";
 
 const CharacterSearch = React.memo(() => {
   const characters = useSelector(getCharacters);
@@ -28,17 +30,11 @@ const CharacterSearch = React.memo(() => {
         <button type="submit">Search</button>
       </form>
       {loading && "Loading..."}
-      <ul>
+      <CardGrid>
         {characters.map(c => (
-          <li key={c.id}>
-            <img
-              src={`${c.thumbnail.path}.${c.thumbnail.extension}`}
-              width="100"
-            />
-            <Link to={`/character/${c.id}`}>{c.name}</Link>
-          </li>
+          <CharacterCard character={c} />
         ))}
-      </ul>
+      </CardGrid>
     </div>
   );
 });
