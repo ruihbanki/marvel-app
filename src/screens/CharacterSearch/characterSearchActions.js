@@ -1,6 +1,7 @@
 import { getCharacters } from "../../services/marvelServices";
 import { normalizeCharacters } from "../../config/normalize";
 import { updateEntities } from "../../entities/entitiesActions";
+import { setLoading } from "../Main/mainActions";
 
 export const FETCH_CHARACTERS_REQUEST = "FETCH_CHARACTERS_REQUEST";
 export const FETCH_CHARACTERS_FAILURE = "FETCH_CHARACTERS_FAILURE";
@@ -30,6 +31,7 @@ export function fetchCharactersSuccess(data, pagination) {
 export function fetchCharacters(keywords, page) {
   return dispatch => {
     dispatch(fetchCharactersRequest());
+    dispatch(setLoading(true));
     getCharacters(keywords, page - 1, 20).then(resp => {
       const {
         data: {
@@ -37,6 +39,7 @@ export function fetchCharacters(keywords, page) {
         }
       } = resp;
       const normalized = normalizeCharacters(results);
+      dispatch(setLoading(false));
       dispatch(updateEntities(normalized.entities));
       dispatch(
         fetchCharactersSuccess(normalized.result, {

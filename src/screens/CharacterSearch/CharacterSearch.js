@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
-import {
-  getCharacters,
-  getLoading,
-  getPagination
-} from "./characterSearchSelectors";
+import { getCharacters, getPagination } from "./characterSearchSelectors";
 import { fetchCharacters } from "./characterSearchActions";
 import CharacterCard from "./CharacterCard";
 import CardGrid from "../../components/CardGrid";
@@ -16,7 +12,6 @@ const CharacterSearch = React.memo(() => {
   const history = useHistory();
 
   const characters = useSelector(getCharacters);
-  const loading = useSelector(getLoading);
   const pagination = useSelector(getPagination);
   const [search, setSearch] = useState("");
 
@@ -46,7 +41,6 @@ const CharacterSearch = React.memo(() => {
         <input value={search} onChange={e => setSearch(e.target.value)} />
         <button type="submit">Search</button>
       </form>
-      {loading && "Loading..."}
       <CardGrid mt={4} mb={4}>
         {characters.map(c => (
           <CharacterCard character={c} onClick={handleEdit} />
