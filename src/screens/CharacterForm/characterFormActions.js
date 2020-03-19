@@ -1,6 +1,6 @@
 import { getCharacter } from "../../services/marvelServices";
 import { normalizeCharacters } from "../../config/normalize";
-import { updateEntities } from "../../entities/entitiesActions";
+import { updateEntities, updateEntity } from "../../entities/entitiesActions";
 
 export const FETCH_CHARACTER_REQUEST = "FETCH_CHARACTER_REQUEST";
 export const FETCH_CHARACTER_FAILURE = "FETCH_CHARACTER_FAILURE";
@@ -34,5 +34,11 @@ export function fetchCharacter(id) {
       dispatch(updateEntities(normalized.entities));
       dispatch(fetchCharacterSuccess());
     });
+  };
+}
+
+export function saveCharacter(character) {
+  return dispatch => {
+    dispatch(updateEntity("characters", character.id, character));
   };
 }

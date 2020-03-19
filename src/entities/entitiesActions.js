@@ -4,3 +4,12 @@ export function updateEntities(entities) {
     entities
   };
 }
+
+export function updateEntity(entityType, id, entity) {
+  return {
+    type: "UPDATE_ENTITY",
+    entityType,
+    id,
+    entity
+  };
+}

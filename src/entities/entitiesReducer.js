@@ -11,11 +11,16 @@ const entitiesReducer = (state, action) => {
   switch (action.type) {
     case "UPDATE_ENTITIES": {
       const { entities } = action;
-      return merge(state, entities);
+      return merge(entities, state);
     }
-    case "DELETE_ENTITY": {
-      console.log(action);
-      return state;
+    case "UPDATE_ENTITY": {
+      return {
+        ...state,
+        [action.entityType]: {
+          ...state[action.entityType],
+          [action.id]: action.entity
+        }
+      };
     }
     default: {
       return state;
