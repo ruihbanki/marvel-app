@@ -19,20 +19,33 @@ export function fetchCharactersFailure(error) {
   };
 }
 
-export function fetchCharactersSuccess(data) {
+export function fetchCharactersSuccess(data, pagination) {
   return {
     type: FETCH_CHARACTERS_SUCCESS,
-    data
+    data,
+    pagination
   };
 }
 
-export function fetchCharacters(keywords, offset, limit) {
+export function fetchCharacters(keywords, page) {
   return dispatch => {
     dispatch(fetchCharactersRequest());
-    getCharacters(keywords, offset, limit).then(resp => {
-      const normalized = normalizeCharacters(resp.data.data.results);
+    getCharacters(keywords, page - 1, 20).then(resp => {
+      const {
+        data: {
+          data: { offset, limit, total, count, results }
+        }
+      } = resp;
+      const normalized = normalizeCharacters(results);
       dispatch(updateEntities(normalized.entities));
-      dispatch(fetchCharactersSuccess(normalized.result));
+      dispatch(
+        fetchCharactersSuccess(normalized.result, {
+          offset,
+          limit,
+          total,
+          count
+        })
+      );
     });
   };
 }

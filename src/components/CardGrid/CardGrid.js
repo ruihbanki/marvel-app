@@ -1,33 +1,32 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
-    padding: 8
+    marginLeft: -8,
+    marginRight: -8
   },
   card: {
     width: 240,
-    padding: 8,
-    "& > div": {
-      height: 340
-    }
+    padding: 8
   }
 }));
 
-const CardGrid = React.memo(({ children }) => {
+const CardGrid = React.memo(({ children, ...others }) => {
   const classes = useStyles();
   const childrenArray = React.Children.toArray(children);
 
   return (
-    <div className={classes.root}>
+    <Box className={classes.root} {...others}>
       {childrenArray.map((child, index) => (
         <div key={index} className={classes.card}>
           {child}
         </div>
       ))}
-    </div>
+    </Box>
   );
 });
 

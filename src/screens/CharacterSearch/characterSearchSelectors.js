@@ -9,3 +9,7 @@ export const getCharacters = state => {
     getEntity(state, "characters", id)
   );
 };
+
+export const getPagination = state => {
+  return state.ui.characterSearch.pagination;
+};

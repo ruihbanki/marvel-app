@@ -6,8 +6,12 @@ import {
 
 const initialState = {
   charactersIds: [],
-  offset: 0,
-  limit: 20,
+  pagination: {
+    offset: 0,
+    limit: 20,
+    total: 0,
+    count: 0
+  },
   error: null,
   loading: false
 };
@@ -34,6 +38,7 @@ const characterSearchReducer = (state, action) => {
       return {
         ...state,
         charactersIds: action.data,
+        pagination: action.pagination,
         loading: false
       };
     }

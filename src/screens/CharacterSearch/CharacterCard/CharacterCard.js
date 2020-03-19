@@ -10,19 +10,22 @@ import LineClamp from "../../../components/LineClamp";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345
+    width: "100%",
+    height: 320
   },
   media: {
     height: 140
   }
 });
 
-const CharacterCard = ({ character }) => {
+const CharacterCard = ({ character, onClick }) => {
   const classes = useStyles();
   const thumbnail = `${character.thumbnail.path}.${character.thumbnail.extension}`;
-  const handleClickEdit = () => {};
+  const handleClick = () => {
+    onClick(character);
+  };
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={handleClick}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
