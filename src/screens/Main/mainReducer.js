@@ -1,7 +1,8 @@
-import { MAIN_SET_LOADING } from "./mainActions";
+import { MAIN_SET_LOADING, MAIN_SET_SNACKBAR } from "./mainActions";
 
 const initialState = {
-  loading: false
+  loading: false,
+  snackbarMessage: null
 };
 
 const mainReducer = (state, action) => {
@@ -13,6 +14,12 @@ const mainReducer = (state, action) => {
       return {
         ...state,
         loading: action.loading
+      };
+    }
+    case MAIN_SET_SNACKBAR: {
+      return {
+        ...state,
+        snackbarMessage: action.message
       };
     }
     default: {

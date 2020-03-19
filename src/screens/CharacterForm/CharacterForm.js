@@ -26,7 +26,7 @@ const CharacterForm = React.memo(() => {
     }));
   };
 
-  const handleCancel = () => {
+  const handleBack = () => {
     history.push("/");
   };
 
@@ -77,9 +77,9 @@ const CharacterForm = React.memo(() => {
           type="button"
           variant="contained"
           color="default"
-          onClick={handleCancel}
+          onClick={handleBack}
         >
-          Cancelar
+          Back
         </Button>{" "}
         <Button type="submit" variant="contained" color="primary">
           Save

@@ -7,20 +7,20 @@ export const FETCH_CHARACTERS_REQUEST = "FETCH_CHARACTERS_REQUEST";
 export const FETCH_CHARACTERS_FAILURE = "FETCH_CHARACTERS_FAILURE";
 export const FETCH_CHARACTERS_SUCCESS = "FETCH_CHARACTERS_SUCCESS";
 
-export function fetchCharactersRequest() {
+function fetchCharactersRequest() {
   return {
     type: FETCH_CHARACTERS_REQUEST
   };
 }
 
-export function fetchCharactersFailure(error) {
+function fetchCharactersFailure(error) {
   return {
     type: FETCH_CHARACTERS_FAILURE,
     error
   };
 }
 
-export function fetchCharactersSuccess(data, pagination) {
+function fetchCharactersSuccess(data, pagination) {
   return {
     type: FETCH_CHARACTERS_SUCCESS,
     data,
