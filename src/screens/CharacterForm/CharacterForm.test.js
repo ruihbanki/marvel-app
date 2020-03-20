@@ -1,13 +1,13 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import TestProvider from "../../tests/utils/TestProvider";
-import CharacterSearch from "./CharacterSearch";
+import CharacterForm from "./CharacterForm";
 
-describe("The CharacterSearch", () => {
+describe("The CharacterForm", () => {
   it("should render properly", () => {
     const { container } = render(
       <TestProvider>
-        <CharacterSearch />
+        <CharacterForm />
       </TestProvider>
     );
     expect(container.firstChild).toBeDefined();
